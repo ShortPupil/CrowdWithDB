@@ -1,0 +1,132 @@
+{
+  "id": "1",
+  "requesterId":"1",
+  "content": "animal",
+  "standard":10,
+  "point":1,
+  "type": "ClassTag",
+  "state": "procassing",
+  "imagePath": [
+      "image/1/1_1.jpg",
+      "image/1/1_2.jpg"
+  ],
+  "images": [
+    {
+      "id": "1_1",
+      "path":"image/1/1_1.jpg",
+      "state":"processing",
+      "records": [
+        {
+          "user": "xiong",
+          "tags": [
+            
+          ],
+          "description": {
+            "twoContent":"",
+            "oneContent":{
+               "sex": "male",
+               "hairLength": "long"
+            }           
+          }
+        },
+        {
+          "user": "xiong",
+          "tags": [
+            
+          ],
+          "description": {
+            "twoContent":"",
+            "oneContent":{
+               "sex": "male",
+               "hairLength": "long"
+            }           
+          }
+        },
+        {
+          "user": "xiong",
+          "tags": [
+            
+          ],
+          "description": {
+            "twoContent":"",
+            "oneContent":{
+               "sex": "male",
+               "hairLength": "long"
+            }           
+          }
+        },
+        {
+          "user": "xiong",
+          "tags": [
+            
+          ],
+          "description": {
+            "twoContent":"",
+            "oneContent":{
+               "sex": "male",
+               "hairLength": "long"
+            }           
+          }
+        },
+        {
+          "user": "xiong",
+          "tags": [
+            
+          ],
+          "description": {
+            "twoContent":"",
+            "oneContent":{
+               "sex": "male",
+               "hairLength": "long"
+            }           
+          }
+        }
+      ]
+    },
+    {
+      "id": "1_2",
+      "path":"../static/image/1/1_2.jpg",
+      "state":"processing",
+      "records": [
+        {
+          "user": "xiong",
+          "tags": [            
+          ],
+          "description": {
+            "twoContent":"",
+            "oneContent":{
+               "sex": "male",
+               "hairLength": "long"
+            }           
+          }
+        },
+        {
+          "user": "xiong",
+          "tags": [
+            
+          ],
+          "description": {
+            "twoContent":"",
+            "oneContent":{
+               "sex": "male",
+               "hairLength": "long"
+            }           
+          }
+        },
+        {
+          "user": "xiong",
+          "tags": [
+            
+          ],
+          "description": {
+            "twoContent":"",
+            "oneContent":{
+               "sex": "male",
+               "hairLength": "long"
+            }           
+          }
+        }
+      ]
+    }
+  ]
+}

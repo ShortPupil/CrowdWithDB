@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+
+function person(firstname,lastname,age,eyecolor)
+{
+this.firstname=firstname;
+this.lastname=lastname;
+this.age=age;
+this.eyecolor=eyecolor;
+ 
+this.changeName=changeName;
+function changeName(name)
+{
+this.lastname=name;
+}
+}
+myMother=new person("Steve","Jobs",56,"green");
+myMother.changeName("Ballmer");
+document.write(myMother.lastname);
+</script>
+</body>
+</html>

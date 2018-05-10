@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RequestManage</title>
+<h1>项目管理</h1>
+
+<script type="text/javascript">
+function load(){
+	var str=window.location.search;
+	var label=document.getElementById("nameLabel");
+	//location.search是从当前URL的?号开始的字符串
+	label.innerText=str.substr(1,str.length()-1);
+	var requesterIDTemp=document.getElementById("nameLabel").value;
+	var requesterIDInput=document.getElementById("requesterIDInput");
+	requesterIDInput.innerHTML=requesterIDTemp;
+	
+}
+
+function checkDetail(){
+	//查看一个任务的细节
+}
+
+function cancelRequest(){
+	//关闭该任务
+}
+
+function deleteRequest(){
+	//删除该任务
+}
+
+function returnToRequesterHome(){
+	var name=document.getElementById("nameLabel").value;
+	location.href="RequesterHome.html?"+name;
+}
+</script>
+</head>
+
+<body onload="load()">
+<div id="requesterDiv">
+<label id="nameLabel"></label>
+<label>|</label>
+<a href="RequesterLogin.html">登出</a>
+<label>|</label>
+<a href="ContactUs.html">联系我们</a>
+</div>
+
+<form method="post">
+<input type="text" id="requesterIDInput" name="requesterID" style="display:none">
+<input type="submit">
+</form>
+
+<table border="3" id="tabelView">
+
+<tr>
+<th>标注类型</th>
+<th>名称</th>
+<th>状态</th>
+</tr>
+
+<c:forEach items="${list}" var="item" varStatus="status">
+<tr id="list">
+<td>${item.type}</td>
+<td>${item.name}</td>
+<td>${item.state}</td>
+
+</table>
+</body>
+</html>
