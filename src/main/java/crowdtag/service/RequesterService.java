@@ -12,8 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import crowdtag.hibernate.entity.RequesterEntity;
 import crowdtag.model.Result;
-import crowdtag.model.user.Requester;
 
 
 
@@ -86,7 +86,7 @@ public class RequesterService {
 	/** 注册
 	 * @param requester 发起者类
 	 * @return result 结果信息*/
-    public Result register(Requester requester) {  
+    public Result register(RequesterEntity requester) {  
     	Result result=new Result();
     	result.isright=false;
     	ArrayList<String> s=new ArrayList<String>();

@@ -7,7 +7,7 @@ import java.io.FileReader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import crowdtag.model.requestJson.JsonJavaVO;
+import crowdtag.hibernate.json.JsonJavaVO;
 
 public class JsonTransformation {
 	

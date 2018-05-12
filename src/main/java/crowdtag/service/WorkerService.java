@@ -12,9 +12,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import crowdtag.hibernate.entity.WorkerEntity;
+import crowdtag.hibernate.json.JsonJavaVO;
 import crowdtag.model.Result;
-import crowdtag.model.requestJson.JsonJavaVO;
-import crowdtag.model.user.Worker;
 
 
 
@@ -84,7 +84,7 @@ public Result login(String id,String key) {
 /**工人注册
  * worker worker对象
  * **/
-public Result register(Worker worker) {
+public Result register(WorkerEntity worker) {
 	Result result=new Result();
 	result.isright=false;
 	ArrayList<String> s=new ArrayList<String>();
