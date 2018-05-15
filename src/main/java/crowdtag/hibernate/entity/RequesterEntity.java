@@ -1,8 +1,6 @@
 package crowdtag.hibernate.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.mysql.jdbc.Blob;
+
 @Entity
-@Table(name="requester")
+@Table(name="requesters")
 public class RequesterEntity implements Serializable{
 
 	/**
@@ -19,10 +19,9 @@ public class RequesterEntity implements Serializable{
 	 */
 	private static final long serialVersionUID = -432980000882717796L;
 
-	/**发起者id 000001*/
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	private int id;
 
 	/**发起者姓名*/
 	@Column(nullable = false)
@@ -31,16 +30,18 @@ public class RequesterEntity implements Serializable{
 	/**发起者密码*/
 	@Column(nullable = false)
 	private String password;
-
-	/**发起者发起的request的id*/
-	@Column(nullable = false)
-	private String requestlist;
 	
-	public String getId() {
+	private String email;
+	
+	private Blob picture;
+	
+	private String address;
+	
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -60,14 +61,27 @@ public class RequesterEntity implements Serializable{
 		this.password = password;
 	}
 
-	public String getRequestlist() {
-		return requestlist;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setRequestlist(ArrayList<String> requestList) {
-		String separator = "/";
-		for(int i=0; i<requestList.size() ; i++) {
-			this.requestlist = this.requestlist + requestList.get(i) + separator;
-		}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Blob getPicture() {
+		return picture;
+	}
+
+	public void setPicture(Blob picture) {
+		this.picture = picture;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }

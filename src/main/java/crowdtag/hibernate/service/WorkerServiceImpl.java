@@ -26,7 +26,7 @@ public class WorkerServiceImpl implements WorkerService{
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int id) {
 		// TODO Auto-generated method stub
 		workerRepository.deleteById(id);
 	}

@@ -18,7 +18,7 @@ public interface RequesterService {
 	 */
 	void save(RequesterEntity entity);
 	
-	void delete(String id);
+	void delete(int id);
 	
 	void delete(RequesterEntity entity);
 }

@@ -34,7 +34,7 @@ public class RequesterServiceImpl implements RequesterService {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int id) {
 		// TODO Auto-generated method stub
 		requesterRepository.deleteById(id);
 	}

@@ -18,7 +18,7 @@ public interface WorkerService {
 	 */
 	void save(WorkerEntity entity);
 	
-	void delete(String id);
+	void delete(int id);
 	
 	void delete(WorkerEntity entity);
 }

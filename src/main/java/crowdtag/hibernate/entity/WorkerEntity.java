@@ -1,7 +1,5 @@
 package crowdtag.hibernate.entity;
 
-import java.util.ArrayList;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,13 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="worker")
+@Table(name="workers")
 public class WorkerEntity {
 
 	/**工人id*/
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	private int id;
 
 	/**工人名称*/
 	@Column(nullable = false)
@@ -29,24 +27,16 @@ public class WorkerEntity {
 	/**工人积分*/
 	@Column(nullable = false)
 	private int point;
-
-	/**工人标注到的位置*/
-	@Column(nullable = false)
-	private int position;
-
-	/**关联的id+完成数  example: "1,2"*/
-	@Column(nullable = false)
-	private String requestlist;
 	
 	public WorkerEntity() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -72,22 +62,6 @@ public class WorkerEntity {
 
 	public void setPoint(int point) {
 		this.point = point;
-	}
-
-	public int getPosition() {
-		return position;
-	}
-
-	public void setPosition(int position) {
-		this.position = position;
-	}
-
-
-	public void setRequestList(ArrayList<String> requestList) {
-		String separator = "/";
-		for(int i=0; i<requestList.size() ; i++) {
-			this.requestlist = this.requestlist + requestList.get(i) + separator;
-		}
 	}
 
 	public String getRequestlist() {
