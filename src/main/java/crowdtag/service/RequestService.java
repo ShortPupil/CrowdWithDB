@@ -7,8 +7,8 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-import crowdtag.hibernate.json.Images;
-import crowdtag.hibernate.json.JsonJavaVO;
+import crowdtag.hibernate.entity.json.Images;
+import crowdtag.hibernate.entity.json.JsonJavaVO;
 import crowdtag.model.Result;
 import crowdtag.model.request.RequestModel;
 import crowdtag.model.temporary.ImagesAndCollectionId;

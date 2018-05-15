@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import crowdtag.hibernate.entity.WorkerEntity;
-import crowdtag.hibernate.json.JsonJavaVO;
+import crowdtag.hibernate.entity.json.JsonJavaVO;
 import crowdtag.model.Result;
 
 
