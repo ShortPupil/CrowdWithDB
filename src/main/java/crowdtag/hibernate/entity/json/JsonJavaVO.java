@@ -5,8 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="json_info")
 public class JsonJavaVO {
 	
     public JsonJavaVO(String id, String requesterId, String content, int standard, int point, String type, String state,

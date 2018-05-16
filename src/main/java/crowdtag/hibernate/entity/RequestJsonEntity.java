@@ -8,11 +8,11 @@ import javax.persistence.Table;
 
 import com.alibaba.fastjson.JSON;
 
-@Entity
-@Table(name="request_json")
+//@Entity
+//@Table(name="request_json")
 public class RequestJsonEntity {
 
-	@Id
+	/*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
@@ -24,5 +24,5 @@ public class RequestJsonEntity {
 
 	public void setRequest(JSON request) {
 		this.request = request;
-	}
+	}*/
 }
