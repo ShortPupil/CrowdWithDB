@@ -3,24 +3,21 @@ package testHibernate;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
-
-import com.huangliusong.entity.Customer;
-import com.huangliusong.entity.Order;
-
 import crowdtag.hibernate.entity.RequesterEntity;
 import crowdtag.hibernate.entity.WorkerEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@SpringBootTest
 public class testDemo {
 	private static SessionFactory sessionFactory;
 	private static Session session;
@@ -41,12 +38,6 @@ public class testDemo {
 		session = sessionFactory.openSession();
 		// 5.打开会话
 		transaction = session.beginTransaction();
-	}
-	@After
-	public void destory() {
-		transaction.commit();
-		session.close();
-		sessionFactory.close();
 	}
 
 	@Test

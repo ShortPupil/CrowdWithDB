@@ -1,6 +1,7 @@
 package crowdtag.hibernate.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -11,7 +12,7 @@ import crowdtag.hibernate.entity.RequesterEntity;
 import crowdtag.hibernate.repository.RequesterRepository;
 
 @Service
-public class RequesterServiceImpl implements RequesterService {
+public class RequesterServiceImpl implements HibernateService<RequesterEntity> {
 	@Autowired
 	private RequesterRepository requesterRepository;
 
@@ -25,12 +26,13 @@ public class RequesterServiceImpl implements RequesterService {
 
 	/**
 	 * Save
-	 * @param city
+	 * @param RequesterEntity
 	 */
 	@Transactional
-	public void save(RequesterEntity entity) {
+	public int save(RequesterEntity entity) {
 		// TODO Auto-generated method stub
-		requesterRepository.save(entity);
+		entity = requesterRepository.saveAndFlush(entity);
+		return entity.getId();
 	}
 
 	@Override
@@ -43,5 +45,11 @@ public class RequesterServiceImpl implements RequesterService {
 	public void delete(RequesterEntity entity) {
 		// TODO Auto-generated method stub
 		requesterRepository.delete(entity);
+	}
+
+	@Override
+	public Optional<RequesterEntity> findById(int id) {
+		// TODO Auto-generated method stub
+		return requesterRepository.findById(id);
 	}
 }

@@ -17,12 +17,12 @@ import com.alibaba.fastjson.JSON;
 
 import crowdtag.hibernate.entity.RequesterEntity;
 import crowdtag.hibernate.result.ResultInfo;
-import crowdtag.hibernate.service.RequesterService;
+import crowdtag.hibernate.service.HibernateService;
 
 @Controller
 public class IndexController {
 	@Autowired
-	private RequesterService requesterService;
+	private HibernateService<RequesterEntity> requesterService;
 
 	@RequestMapping(value={"","/","index"}, method=RequestMethod.GET)
 	public String index() {

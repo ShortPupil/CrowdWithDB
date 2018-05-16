@@ -10,15 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name="requesters")
-public class RequesterEntity implements Serializable{
+public class RequesterEntity implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -432980000882717796L;
+	private static final long serialVersionUID = -1886147662007952749L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -33,6 +33,7 @@ dependencies {
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 	compile('org.thymeleaf:thymeleaf-spring5')
 	compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+	compile group: 'org.json', name: 'json', version: '20180130'
 	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.0.2.RELEASE'
 	testCompile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'

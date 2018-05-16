@@ -1,5 +1,7 @@
 package crowdtag.hibernate.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="workers")
-public class WorkerEntity {
+public class WorkerEntity implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8455376381086531402L;
 
 	/**工人id*/
 	@Id
