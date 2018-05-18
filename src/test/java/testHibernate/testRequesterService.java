@@ -22,7 +22,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
 import crowdtag.hibernate.entity.RequesterEntity;
-import crowdtag.hibernate.service.RequesterServiceImpl;
+import crowdtag.hibernate.serviceimpl.RequesterServiceImpl;
  
 public class testRequesterService {
  

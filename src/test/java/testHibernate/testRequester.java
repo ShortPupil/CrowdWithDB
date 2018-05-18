@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import crowdtag.hibernate.entity.RequesterEntity;
 import crowdtag.hibernate.service.HibernateService;
-import crowdtag.hibernate.service.RequesterServiceImpl;
+import crowdtag.hibernate.serviceimpl.RequesterServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class) 
 public class testRequester {
