@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import crowdtag.hibernate.entity.RequestJsonEntity;
 import crowdtag.hibernate.repository.RequestJsonRepository;
-import crowdtag.hibernate.service.HibernateService;
 import crowdtag.hibernate.service.RequestJsonService;
 
 public class RequestJsonServiceImpl implements RequestJsonService{
@@ -35,11 +34,6 @@ public class RequestJsonServiceImpl implements RequestJsonService{
 		requestJsonRepository.existsById(id);
 	}
 
-	@Override
-	public void delete(RequestJsonEntity entity) {
-		// TODO Auto-generated method stub
-		requestJsonRepository.delete(entity);
-	}
 
 	@Override
 	public Optional<RequestJsonEntity> findById(int id) {

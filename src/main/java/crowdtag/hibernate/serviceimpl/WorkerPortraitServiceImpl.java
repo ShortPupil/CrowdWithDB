@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import crowdtag.hibernate.entity.WorkerPortraitEntity;
 import crowdtag.hibernate.repository.WorkerPortraitRepository;
-import crowdtag.hibernate.service.HibernateService;
 import crowdtag.hibernate.service.WorkerPortraitService;
 
 @Service
@@ -39,11 +38,6 @@ public class WorkerPortraitServiceImpl implements WorkerPortraitService{
 		workerPortraitRepository.deleteById(id);
 	}
 
-	@Override
-	public void delete(WorkerPortraitEntity entity) {
-		// TODO Auto-generated method stub
-		workerPortraitRepository.delete(entity);
-	}
 
 	@Override
 	public Optional<WorkerPortraitEntity> findById(int id) {

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import crowdtag.hibernate.entity.RequesterEntity;
 import crowdtag.hibernate.repository.RequesterRepository;
-import crowdtag.hibernate.service.HibernateService;
 import crowdtag.hibernate.service.RequesterService;
 
 @Service
@@ -42,13 +41,7 @@ public class RequesterServiceImpl implements RequesterService {
 		// TODO Auto-generated method stub
 		requesterRepository.deleteById(id);
 	}
-
-	@Override
-	public void delete(RequesterEntity entity) {
-		// TODO Auto-generated method stub
-		requesterRepository.delete(entity);
-	}
-
+	
 	@Override
 	public Optional<RequesterEntity> findById(int id) {
 		// TODO Auto-generated method stub

@@ -41,10 +41,4 @@ public class AdministratorServiceImpl implements AdministratorService{
 		administratorRepository.deleteById(id);;
 	}
 
-	@Override
-	public void delete(AdministratorEntity entity) {
-		// TODO Auto-generated method stub
-		administratorRepository.delete(entity);
-	}
-
 }
