@@ -4,24 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="workers")
-public class WorkerEntity implements Serializable {
+public class WorkerEntity extends BaseModel implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8455376381086531402L;
-
-	/**工人id*/
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 
 	/**工人名称*/
 	@Column(nullable = false)
@@ -29,22 +21,22 @@ public class WorkerEntity implements Serializable {
 
 	/**工人密码*/
 	@Column(nullable = false)
-	private String password;
+	private String password = "1234";
 
 	/**工人积分*/
 	@Column(nullable = false)
-	private int point;
+	private int point = 0;
 	
-	public WorkerEntity() {
+	/**工人排名*/
+	@Column(nullable = false)
+	private int rank = 0;
+	
+	public WorkerEntity(String name, String password) {
 		// TODO Auto-generated constructor stub
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+		this.workername = name;
+		this.password = password;
+		this.point = 0;
+		this.rank = 0;
 	}
 
 	public String getWorkername() {
@@ -74,5 +66,13 @@ public class WorkerEntity implements Serializable {
 	public String getRequestlist() {
 		// TODO Auto-generated method stub
 		return this.getRequestlist();
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 }

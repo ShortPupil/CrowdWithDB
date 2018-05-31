@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<p>user quantity: <span th:text="${worker_quantity}"></span></p>
+<p>request quantity: <span th:text="${request_quantity}"></span></p>
+<p>下面是为未完成的：</p>
+<ul th:each="request:${request_unfinished}">
+<li>
+<p th:text="${request.id}"></p>
+</li>
+</ul>
+<p>下面是已完成的： </p>
+<ul th:each="request:${request_finished}">
+<li>
+<p th:text="${request.id}"></p>
+</li>
+</ul>
+</body>
+</html>

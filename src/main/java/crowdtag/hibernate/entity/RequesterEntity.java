@@ -5,23 +5,16 @@ import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="requesters")
-public class RequesterEntity implements Serializable {
+public class RequesterEntity extends BaseModel implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1886147662007952749L;
-
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 
 	/**发起者姓名*/
 	@Column(nullable = false)
@@ -29,22 +22,25 @@ public class RequesterEntity implements Serializable {
 
 	/**发起者密码*/
 	@Column(nullable = false)
-	private String password;
+	private String password = "1234";
 	
+	@Column(nullable = true)
 	private String email;
 	
+	@Column(nullable = true)
 	private Blob picture;
 	
+	@Column(nullable = true)
 	private String address;
 	
-	public int getId() {
-		return id;
+	public RequesterEntity(String name, String password, String email, Blob pic, String address) {
+		this.name = name;
+		this.password = password;
+		this.email = email;
+		this.picture = pic;
+		this.address = address;
 	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	
 	public String getName() {
 		return name;
 	}

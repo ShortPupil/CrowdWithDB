@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="worker_portrait")
-public class WorkerPortraitEntity implements Serializable {
+public class WorkerPortraitEntity extends BaseModel implements Serializable{
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class WorkerPortraitEntity implements Serializable {
 	/**工人id*/
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 
 	/**工人准确度*/
 	@Column(nullable = false)
@@ -35,13 +35,12 @@ public class WorkerPortraitEntity implements Serializable {
 	@Column(nullable = false)
 	private double credit;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	/**工人效率*/
+	@Column(nullable = false)
+	private double efficiency;
+	
+	private double point;
+	
 
 	public double getAccuracy() {
 		return accuracy;
@@ -65,5 +64,27 @@ public class WorkerPortraitEntity implements Serializable {
 
 	public void setCredit(double credit) {
 		this.credit = credit;
+	}
+
+	public double getEfficiency() {
+		return efficiency;
+	}
+
+	public void setEfficiency(double efficiency) {
+		this.efficiency = efficiency;
+	}
+
+	/**
+	 * @return the point
+	 */
+	public double getPoint() {
+		return point;
+	}
+
+	/**
+	 * @param point the point to set
+	 */
+	public void setPoint(double point) {
+		this.point = point;
 	}
 }

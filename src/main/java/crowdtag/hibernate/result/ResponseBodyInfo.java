@@ -12,7 +12,7 @@ public class ResponseBodyInfo<T> {
 	protected ResponseBodyInfo() {
 	}
 
-	protected ResponseBodyInfo(int errorCode, String errorText, T data) {
+	public ResponseBodyInfo(int errorCode, String errorText, T data) {
 		this.errorCode = errorCode;
 		this.errorText = errorText;
 		this.data = data;
