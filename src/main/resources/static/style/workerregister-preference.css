@@ -1,0 +1,19 @@
+.tittle{
+	margin-top:5%;
+	font-size:250%;
+	text-align:center;
+	color:#fc5132;
+}
+.pref{
+	margin-top:3%;
+	padding:0 10%;
+}
+
+.pref-one{
+	display:inline-block;
+	width:20%;
+}
+
+.pref-one a img{
+	width:100%;
+}

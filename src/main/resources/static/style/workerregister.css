@@ -1,0 +1,88 @@
+body{
+padding:0px;
+margin:0px;
+}
+
+a{
+text-decoration: none;
+cursor: pointer;
+}
+
+input{
+cursor: text;
+}
+
+input[type="submit"]{
+cursor: pointer;
+}
+
+.side{
+position: fixed;
+height:100%;
+top:0;
+width:40%;
+background-image:url(../illustrate/register.jpeg);
+background-repeat: no-repeat;
+}
+
+.side img{
+width:10%;
+margin-left:5%;
+margin-top:3%;
+display: inline-block;
+}
+
+.side h1{
+display: inline-block;
+}
+.register{
+margin-top:10%;
+margin-left: 50%;
+}
+
+.register form input{
+display: block;
+margin: 5% 0;
+border:1px solid #bdbdbd;
+padding:2% 3%;
+width:70%;
+border-radius:4px;
+border:1px #aaa solid;
+font-size:120%;
+color:#777;
+}
+
+.register form input[type="submit"]{
+margin-top:10%;
+width:78%;
+background:#e85356;
+color:#fff;
+font-size:140%;
+}
+
+.register h1{
+font-size:250%;
+margin-bottom:0;
+}
+
+.register h2{
+margin-top:0;
+color:#333;
+margin-bottom:5%;
+}
+
+.register-login{
+color:#333;
+margin-left:60%;
+}
+
+.register-login a{
+color:#e22;
+}
+
+
+
+
+
+
+

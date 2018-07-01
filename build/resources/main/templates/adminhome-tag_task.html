@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.com">
+<head>
+<meta charset="UTF-8">
+<title>任务管理</title>
+<link rel="stylesheet" type="text/css" href="style/template2.css">
+<script>
+//注释
+</script>
+<script>
+</script>
+</head>
+<body>
+<div class="navigator">
+<div class="navigator-logo">
+<a>
+<img src="illustrate/logo9.png">
+轻注
+</a>
+</div>
+<div class="navigator-path   _overview">
+<a href="adminhome.html" th:href="adminhome">网站概况</a>
+</div>
+<div class="navigator-path   _worker">
+<a href="adminhome-worker.html" th:href="adminhome-worker">工人管理</a>
+</div>
+<div class="navigator-path   _requester">
+<a href="adminhome-requester.html" th:href="adminhome-requester">发起者管理</a>
+</div>
+<div class="navigator-path  _tag">
+<a href="adminhome-tag.html" th:href="adminhome-tag_collection">标注任务管理</a>
+</div>
+<div class="navigator-path  _admin">
+<a href="adminhome-admin.html" th:href="adminhome-admin">管理员管理</a>
+</div>
+</div>
+<div class="tittle">欢迎<a href="adminlogout">登出</a></div>
+<div class="content">
+<ul>
+<li th:each="task:${tasklist}">
+<div th:if="${task.type.RequestType eq 'ClassTag'}">
+<div th:text="${task.question}">question</div>
+<div th:text="${task.answerMap[task.answer]}">answer</div>
+<canvas th:id="${task.WorkerID}+''+${task.imageID}">不支持画布</canvas>
+<script th:inline="javascript">
+var canvas=document.getElementById(/*[[${task.WorkerID}+''+${task.imageID}]]*/"id");
+canvas.height=500;
+canvas.width=500;
+var img=new Image();
+img.src=/*[[${task.imagePath}]]*/"pic";
+img.onload=function(){
+	var cxt=document.getElementById(/*[[${task.WorkerID}+''+${task.imageID}]]*/"id").getContext("2d");
+	cxt.drawImage(this,0,0,500,500);
+}
+</script>
+</div>
+<div th:if="${task.type.RequestType eq 'AreaTag'}">
+<div th:text="${task.question}">question</div>
+<canvas th:id="${task.WorkerID}+''+${task.imageID}">不支持画布</canvas>
+<script th:inline="javascript">
+var canvas=document.getElementById(/*[[${task.WorkerID}+''+${task.imageID}]]*/"id");
+canvas.height=500;
+canvas.width=500;
+var img=new Image();
+img.src=/*[[${task.imagePath}]]*/"pic";
+img.onload=function(){
+	var cxt=document.getElementById(/*[[${task.WorkerID}+''+${task.imageID}]]*/"id").getContext("2d");
+	cxt.lineWidth = 4; 
+	cxt.strokeStyle = 'rgba(255,0,0,0.7)'; 
+	cxt.lineCap="round";
+	
+	cxt.drawImage(this,0,0,500,500);
+	var tags=[[${task.tags}]];
+	for(var index in tags){
+		var tag=JSON.parse(tags[index]);
+		cxt.moveTo(tag[0].x,tag[0].y);
+		for(var index2 in tag){
+			cxt.lineTo(tag[index2].x,tag[index2].y);
+		}
+		cxt.stroke();
+	}
+}
+</script>
+</div>
+<div th:if="${task.type.RequestType eq 'FrameTag'}">
+<div th:text="${task.question}">question</div>
+<canvas th:id="${task.WorkerID}+''+${task.imageID}">不支持画布</canvas>
+<script th:inline="javascript">
+var canvas=document.getElementById(/*[[${task.WorkerID}+''+${task.imageID}]]*/"id");
+canvas.height=500;
+canvas.width=500;
+var img=new Image();
+img.src=/*[[${task.imagePath}]]*/"pic";
+img.onload=function(){
+	var cxt=document.getElementById(/*[[${task.WorkerID}+''+${task.imageID}]]*/"id").getContext("2d");
+	cxt.lineWidth = 4; 
+	cxt.strokeStyle = 'rgba(255,0,0,0.7)'; 
+	cxt.lineCap="round";
+	cxt.drawImage(this,0,0,500,500);
+	var tags=[[${task.tags}]];
+	for(var index in tags){
+		var tag=JSON.parse(tags[index]);
+		cxt.rect(tag[0].x,tag[0].y,tag[1].x-tag[0].x,tag[1].y-tag[0].y);
+		cxt.stroke();
+	}
+}
+
+</script>
+</div>
+</li>
+</ul>
+</div>
+</body>
+</html>

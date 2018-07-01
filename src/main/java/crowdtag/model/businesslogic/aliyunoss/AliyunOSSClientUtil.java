@@ -30,6 +30,7 @@ public class AliyunOSSClientUtil {
 	//阿里云API的密钥Access Key Secret
 	private static String ACCESS_KEY_SECRET;
 	//阿里云API的bucket名称
+	@SuppressWarnings("unused")
 	private static String BACKET_NAME;
 	//初始化属性
 	static{
@@ -43,6 +44,7 @@ public class AliyunOSSClientUtil {
 	 * 获取阿里云OSS客户端对象
 	 * @return ossClient
 	 */
+	@SuppressWarnings("deprecation")
 	public static  OSSClient getOSSClient(){
 		return new OSSClient(ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET);
 	}
@@ -119,7 +121,7 @@ public class AliyunOSSClientUtil {
 	    public static ArrayList<File> upzipFile(File zipFile, String descDir) {
 	    	ArrayList<File> _list = new ArrayList<File>() ;
 	        try {
-	            ZipFile _zipFile = new ZipFile(zipFile);
+				ZipFile _zipFile = new ZipFile(zipFile);
 	            for( Enumeration<? extends ZipEntry> entries = _zipFile.entries() ; entries.hasMoreElements() ; ){
 	                ZipEntry entry = (ZipEntry)entries.nextElement() ;
 	                File _file = new File(descDir + File.separator + entry.getName()) ;
@@ -183,7 +185,8 @@ public class AliyunOSSClientUtil {
                 //指定该Object被下载时的名称（指示MINME用户代理如何显示附加的文件，打开或下载，及文件名称）  
                 metadata.setContentDisposition("filename/filesize=" + fileName + "/" + fileSize + "Byte.");    
                 //上传文件   (上传文件流的形式)  
-                PutObjectResult putResult = ossClient.putObject(bucketName, folder + fileName, is, metadata);    
+                @SuppressWarnings("unused")
+				PutObjectResult putResult = ossClient.putObject(bucketName, folder + fileName, is, metadata);    
                 //解析结果  
                 //resultStr = putResult.getETag();  
                 String path = "https://songzi-picture.oss-cn-shenzhen.aliyuncs.com/" + folder + fileName;

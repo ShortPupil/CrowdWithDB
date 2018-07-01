@@ -20,7 +20,7 @@ public enum RequestType {
 
     @Override
     public String toString() {
-        return getRequestType();
+        return this.RequestType;
     }
 
 
@@ -38,6 +38,4 @@ public enum RequestType {
 	public void setRequestType(String requestType) {
 		RequestType = requestType;
 	}
-    
-    
 }

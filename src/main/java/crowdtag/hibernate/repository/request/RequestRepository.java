@@ -14,6 +14,7 @@ import crowdtag.hibernate.entity.request.RequestEntity;
 @Repository
 public interface RequestRepository extends JpaRepository<RequestEntity, Long>{
 
+	
 	/**通过request查找完成它的user
 	 * @param RequestEntity(可用findById)
 	 * @return 包含user ID的list*/
@@ -44,7 +45,7 @@ public interface RequestRepository extends JpaRepository<RequestEntity, Long>{
 	
 	/**通过工人id获得他完成的records*/
 	@Query("select r from Records r where r.userId = ?1")
-	List<Records> findRecordByWorkerId(long workerId);
+	List<Records> findRecordByWorkerId(Long workerId);
 	
 	
 	
@@ -56,7 +57,7 @@ public interface RequestRepository extends JpaRepository<RequestEntity, Long>{
 			+ "where i.request = ?1 "
 			+ "and i not in "
 			+ "(select r.images from Records r where r.userId=?2)")
-	Images findOptionalImagesByWorkerId(RequestEntity request, long userId);
+	ArrayList<Images> findOptionalImagesByWorkerId(RequestEntity request, long userId);
 
 	/**通过workerId查找他完成过的类型*/
 	@Query("select r.tags "
@@ -74,4 +75,9 @@ public interface RequestRepository extends JpaRepository<RequestEntity, Long>{
 			+ "(select r.images from Records r where r.id = ?1))")
 	int findStrandardByRecords(Long recordId);
 
+	/**根据requesterId查找requester发布的所有任务*/
+	@Query("select r "
+			+ "from RequestEntity r "
+			+ "where r.requesterId = ?1")
+	ArrayList<RequestEntity> findRequestByRequesterId(Long requesterId);
 }

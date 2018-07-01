@@ -31,6 +31,11 @@ public class WorkerEntity extends BaseModel implements Serializable{
 	@Column(nullable = false)
 	private int rank = 0;
 	
+	@Column(nullable = false)
+	private String picture = "https://songzi-picture.oss-cn-shenzhen.aliyuncs.com/picture/p%284%29.jpg";
+	
+	public WorkerEntity() {}
+	
 	public WorkerEntity(String name, String password) {
 		// TODO Auto-generated constructor stub
 		this.workername = name;
@@ -74,5 +79,19 @@ public class WorkerEntity extends BaseModel implements Serializable{
 
 	public void setRank(int rank) {
 		this.rank = rank;
+	}
+
+	/**
+	 * @return the picture
+	 */
+	public String getPicture() {
+		return picture;
+	}
+
+	/**
+	 * @param picture the picture to set
+	 */
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 }

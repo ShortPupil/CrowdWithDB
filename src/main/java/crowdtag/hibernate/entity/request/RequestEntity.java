@@ -1,7 +1,6 @@
 package crowdtag.hibernate.entity.request;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,6 +27,10 @@ public class RequestEntity extends BaseModel implements Serializable{
 	@Column(nullable = false)
     private long requesterId;	
 	
+	@Column(nullable = true)
+	private String name;
+	
+	@Column(nullable = true)
 	private String content;
 	
     /**需要的人数*/
@@ -50,13 +53,22 @@ public class RequestEntity extends BaseModel implements Serializable{
 	@Enumerated(EnumType.STRING)
     private State state = State.PROCESSING; 
     
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "request", cascade = CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER, mappedBy = "request", cascade = CascadeType.ALL)
 	@Column(nullable = false)
     private List<Images> images = new ArrayList<Images>();
 	
+	/**限制效率*/ 
+	@Column(nullable = false)
+	private double efficiency_limit;
+	
+	/**限制准确度*/ 
+	@Column(nullable = false)
+	private double accuracy_limit;
+	
     public RequestEntity() {}
-    public RequestEntity(long requestId, String content, int standard, int point, RequestType type,
-    		String tags) {
+    public RequestEntity(long requestId, String name, String content, int standard, int point, RequestType type,
+    		String tags, double accuracy_limit, double efficiency_limit) {
+    	this.setName(name);
     	this.setRequesterId(requestId);
     	this.setContent(content);
     	this.setStandard(standard);
@@ -65,6 +77,8 @@ public class RequestEntity extends BaseModel implements Serializable{
     	this.setTags(tags);
     	//this.setImages(i);
     	this.setState(State.PROCESSING);
+    	this.setEfficiency_limit(efficiency_limit);
+    	this.setAccuracy_limit(accuracy_limit);
     }
 
     
@@ -134,6 +148,42 @@ public class RequestEntity extends BaseModel implements Serializable{
 	 */
 	public void setType(RequestType type) {
 		this.type = type;
+	}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	/**
+	 * @return the efficiency_limit
+	 */
+	public double getEfficiency_limit() {
+		return efficiency_limit;
+	}
+	/**
+	 * @param efficiency_limit the efficiency_limit to set
+	 */
+	public void setEfficiency_limit(double efficiency_limit) {
+		this.efficiency_limit = efficiency_limit;
+	}
+	/**
+	 * @return the accuracy_limit
+	 */
+	public double getAccuracy_limit() {
+		return accuracy_limit;
+	}
+	/**
+	 * @param accuracy_limit the accuracy_limit to set
+	 */
+	public void setAccuracy_limit(double accuracy_limit) {
+		this.accuracy_limit = accuracy_limit;
 	}
 
 }

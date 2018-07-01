@@ -1,0 +1,148 @@
+body{
+background:#e1f3f3;
+padding:0px;
+margin:0px;
+color:#434343;
+}
+
+ul{
+list-style: none;
+margin:0px;
+padding:0px;
+}
+
+a{
+text-decoration: none;
+cursor: pointer;
+color:#666;
+}
+
+input{
+cursor: text;
+}
+
+button{
+cursor: pointer;
+}
+
+.top img{
+width:100%;
+height:200px;;
+}
+
+.baseinfo{
+padding:2%;
+width:27%;
+margin-left:3%;
+display: inline-block;
+background:#e7f9f9;
+}
+
+.baseinfo-identity{
+margin-left:40%;
+}
+
+.baseinfo-identity img{
+width:30%;
+vertical-align: sub;
+}
+
+.baseinfo-identity-text1{
+font-weight: bold;
+vertical-align: sub;
+color:#141414;
+font-size:120%;
+}
+
+.baseinfo-identity-text2{
+vertical-align: sub;
+font-size: 80%;
+}
+
+.baseinfo-numbers{
+margin-top:10%;
+text-align: center;
+}
+
+.baseinfo-numbers table{
+width:100%;
+}
+
+.baseinfo-introduce{
+text-align: center;
+margin-top:10%;
+}
+
+.baseinfo-introduce textarea{
+width:100%;
+padding:2% 5%;
+
+}
+
+.baseinfo-path{
+width:100%;
+margin:5%;
+}
+
+.baseinfo-path a img{
+width:20%;
+}
+
+.detailinfo{
+vertical-align: top;
+display: inline-block;
+width:55%;
+padding:5%;
+background:#e7f9f9;
+}
+
+.detailinfo-navigator{
+font-size:123%;
+}
+
+.detailinfo-navigator ul li{
+display: inline;
+margin-right:10%;
+}
+
+.detailinfo-content{
+margin-left:20%;
+margin-top:20%;
+}
+
+.detailinfo-gift ul{
+margin:3%;
+padding:2%;
+}
+.detailinfo-gift ul li{
+width:25%;
+}
+
+.detailinfo-gift ul li img{
+width:100%;
+}
+
+.detailinfo-gift ul li span{
+margin-right:20%;
+}
+
+.chart-worker{
+	margin-top:40px;
+	width:550px;
+	height:350px;
+	left:-100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

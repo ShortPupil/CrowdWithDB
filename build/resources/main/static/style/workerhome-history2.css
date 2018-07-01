@@ -1,0 +1,21 @@
+.detailinfo-history ul li{
+display:inline-block;
+margin:3%;
+
+}
+.detailinfo-history {
+	font-size:120%;
+	padding:2%;
+}
+
+.detailinfo-history ul li{
+width:25%;
+}
+
+.detailinfo-history ul li img{
+width:100%;
+}
+
+.detailinfo-history ul li span{
+margin-right:20%;
+}

@@ -10,7 +10,7 @@ import crowdtag.hibernate.entity.AdministratorEntity;
 
 @Repository
 public interface AdministratorRepository extends JpaRepository<AdministratorEntity, Long>{
-	
+
 	@Query("select a from AdministratorEntity a where a.name = ?1") 
 	List<AdministratorEntity> findByName(String name);
 }

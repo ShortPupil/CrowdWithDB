@@ -2,14 +2,14 @@ package crowdtag.hibernate.result;
 
 public class ResponseBodyInfo<T> {
 	// 错误代码
-	private int errorCode;
+	private int errorCode = 0;
 	// 错误提示
 	private String errorText;
 
 	// 返回对象
 	private T data;
 
-	protected ResponseBodyInfo() {
+	public ResponseBodyInfo() {
 	}
 
 	public ResponseBodyInfo(int errorCode, String errorText, T data) {

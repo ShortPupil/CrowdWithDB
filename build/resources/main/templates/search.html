@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>搜索</title>
+<link rel="stylesheet" type="text/css" href="../static/style/search2.css"th:href="@{style/search2.css}"  >
+<script>
+/*
+注释
+*/
+</script>
+<script type="text/javascript" >
+function search(){
+	var key_input=document.getElementById("key_input");
+	var input=document.createElement("input");
+	input.style.display="none";
+	input.value=key_input.value;
+	input.name=key_input.name;
+	var form=document.getElementById("search_form");
+	form.appendChild(input);
+	form.submit();
+	}
+</script>
+</head>
+
+<body>
+<div class="top1">
+<div class="top1-left">
+<a th:href="home">首页</a>
+</div>
+<div class="top1-right">
+<ul>
+<li th:if="${session.worker ne null}">
+你好，<span th:text="${session.worker.workerEntity.workername}">用户</span>
+</li>
+<li th:if="${session.worker eq null}">
+你好，请<a href="workerlogin" ><span>登录</span></a>
+</li>
+<li>
+<a href="workerhome">我的足迹</a>
+</li>
+<li>
+<a href="teaminfo">联系我们</a>
+</li>
+<li>
+<a href="workerlogout">登出</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="top2">
+<div class="top2-logo">
+<a href="home" >
+<img src="illustrate/logo.png" >
+<span>轻注</span>
+</a>
+</div>
+<div class="top2-key">
+<input type="text" id="key_input" name="search_key">
+<button onclick="search()">搜索</button>
+</div>
+</div>
+
+<div class="top3">
+<ul>
+<li class="top3-home">
+<a href="home.html" th:href="@{/home}">主页</a>
+</li>
+<li class="top3-search">
+<a href="search" >搜索</a>
+</li>
+<li class="top3-teaminfo">
+<a href="teaminfo">小组信息</a>
+</li>
+</ul>
+</div>
+
+<div class="search_key">
+搜索内容：<span th:text="${search_key}"></span>
+</div>
+
+<div class="search_req">
+<form id="search_form">
+<table>
+<tr>
+<td class="search_req-head">标注类型</td>
+<td class="search_req-body">
+<ul>
+<li>
+<input type="checkbox" name="search_types" value="AreaTag">
+<span>区域标注</span>
+</li>
+<li>
+<input type="checkbox" name="search_types" value="FrameTag">
+<span>标框标注</span>
+</li>
+<li>
+<input type="checkbox"name="search_types" value="ClassTag">
+<span>分类标注</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td class="search_req-head">标签选择</td>
+<td class="search_req-body">
+<ul>
+<li>
+<input type="checkbox" name="search_tags" value="cat">
+<span>猫</span>
+</li>
+<li>
+<input type="checkbox" name="search_tags" value="man">
+<span>人</span>
+</li>
+<li>
+<input type="checkbox" name="search_tags" value="food">
+<span>食物</span>
+</li>
+<li>
+<input type="checkbox" name="search_tags" value="vehicle">
+<span>交通工具</span>
+</li>
+<li>
+<input type="checkbox" name="search_tags" value="guidepost">
+<span>路牌</span>
+</li>
+<li>
+<input type="checkbox" name="search_tags" value="screen">
+<span>显示屏</span>
+</li>
+<li>
+<input type="checkbox" name="search_tags" value="race">
+<span>人种</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</form>
+<button onclick="search()">搜索</button>
+</div>
+
+<div class="search_rs">
+<ul>
+<li th:each="collection:${collectionlist}" class="search_rs-task">
+<div class="search_rs-collection-img">
+<a th:href="@{/tag(collectionid=${collection.id})}">
+<img src="pic.jpg" th:src="${collection.images.path}">
+</a>
+</div>
+<div class="search_rs-collection-point">
+<span th:text="${collection.point}">10</span>
+</div>
+<div class="search_rs-collection-content">
+<a th:text="${collection.content}" th:href="@{/tag(collectionid=${collection.id})}">content</a>
+</div>
+</li>
+</ul>
+</div>
+
+<div class="preference" th:if="${session.worker ne null}">
+<div class="preference-tittle">——猜你喜欢——</div>
+<div class="preference-content">
+<ul>
+<li th:each="ad:${adlist}" class="search_rs-task">
+<div class="search_rs-collection-img">
+<a th:href="@{/tag(collectionid=${ad.id})}">
+<img src="../static/illustrate/pic.jpg" th:src="${ad.images.path}">
+</a>
+</div>
+<div class="search_rs-collection-point">
+<span th:text="${ad.point}">10</span>
+</div>
+<div class="search_rs-collection-content">
+<a th:text="${ad.content}" th:href="@{/tag(collectionid=${ad.id})}">content</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="footer">
+<div>WE DO IT</div>
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

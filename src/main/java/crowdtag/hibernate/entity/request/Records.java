@@ -1,20 +1,13 @@
 package crowdtag.hibernate.entity.request;
-
-
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapKeyColumn;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
@@ -38,17 +31,22 @@ public class Records extends BaseModel implements Serializable{
 	@Column(nullable = true)
     private int answers;//-
 	
+	/**允许发起者对该用户的该标注评分*/
+	@Column(nullable = true)
+	private Integer score;
+	
     /**若是第二种标注 答案在这里*/
-	@ElementCollection(fetch=FetchType.LAZY, //加载策略,延迟加载  
+	@ElementCollection(fetch=FetchType.EAGER, //加载策略,延迟加载  
             targetClass=String.class) //指定集合中元素的类型  
     @CollectionTable(name="tags_info") //指定集合生成的表  
     @OrderColumn(name="t_id") //指定排序列的名称  
     private List<String> tags= new ArrayList<String>(); //之前的tags和nodes在数据库中用json表示 //-
 	
-	@Column(nullable = false)
-	
+	@Column(nullable = false)	
     private double time; //-
 	public Records(){}
+	
+	/**对应图片id， 工人id, 答案， tags json信息, 时间*/
 	public Records(Images i, long userId, int a, List<String> t, double time) {
 		this.setImages(i);
 		this.setUser(userId);
@@ -112,5 +110,19 @@ public class Records extends BaseModel implements Serializable{
 	 */
 	public void setAnswers(int answers) {
 		this.answers = answers;
+	}
+
+	/**
+	 * @return the score
+	 */
+	public int getScore() {
+		return score;
+	}
+
+	/**
+	 * @param score the score to set
+	 */
+	public void setScore(int score) {
+		this.score = score;
 	}
 }

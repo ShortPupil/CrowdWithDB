@@ -20,10 +20,17 @@ public class AdministratorEntity extends BaseModel implements Serializable{
 
 	@Column(nullable = false)
 	private String password = "1234";
+	
+	/**权限，0为最高，1、2、3..渐小*/
+	@Column(nullable = false)
+	private int authority;
 
-	public AdministratorEntity(String n, String pw) {
+	public AdministratorEntity() {}
+	
+	public AdministratorEntity(String n, String pw, int authority) {
 		this.name = n;
 		this.password = pw;
+		this.setAuthority(authority);
 	}
 	
 	public String getName() {
@@ -40,5 +47,13 @@ public class AdministratorEntity extends BaseModel implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(int authority) {
+		this.authority = authority;
 	}
 }

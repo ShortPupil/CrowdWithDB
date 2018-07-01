@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.com">
+<head>
+<meta charset="UTF-8">
+<title>任务集管理</title>
+<link rel="stylesheet" type="text/css" href="style/template2.css">
+<script>
+//注释
+</script>
+<script>
+</script>
+</head>
+<body>
+<div class="navigator">
+<div class="navigator-logo">
+<a>
+<img src="illustrate/logo9.png">
+轻注
+</a>
+</div>
+<div class="navigator-path   _overview">
+<a href="adminhome.html" th:href="adminhome">网站概况</a>
+</div>
+<div class="navigator-path   _worker">
+<a href="adminhome-worker.html" th:href="adminhome-worker">工人管理</a>
+</div>
+<div class="navigator-path   _requester">
+<a href="adminhome-requester.html" th:href="adminhome-requester">发起者管理</a>
+</div>
+<div class="navigator-path  _tag">
+<a href="adminhome-tag.html" th:href="adminhome-tag_collection">标注任务管理</a>
+</div>
+<div class="navigator-path  _admin">
+<a href="adminhome-admin.html" th:href="adminhome-admin">管理员管理</a>
+</div>
+</div>
+<div class="tittle">欢迎<a href="adminlogout">登出</a></div>
+<div class="content">
+<table  class="style_table">
+<thead>
+<tr>
+<th>编号</th>
+<th>名字</th>
+<th>内容</th>
+<th>所需人数</th>
+<th>单次分数</th>
+<th>类型</th>
+<th>标签</th>
+<th>状态</th>
+<th>效率限制</th>
+<th>准确率限制</th>
+<th>查看所含内容</th>
+<th>删除</th>
+</tr>
+</thead>
+<tbody>
+<tr  class="style_table-body" th:each="request:${requestlist}">
+<td th:text=${request.id}>id</td>
+<td th:text="${request.name}">name</td>
+<td th:text="${request.content}">content</td>
+<td th:text="${request.standard}">standard</td>
+<td th:text="${request.point}">point</td>
+<td th:text="${request.type.RequestType}">type</td>
+<td th:text="${request.tags}">tags</td>
+<td th:text="${request.state}">state</td>
+<td th:text="${request.efficiency_limit}">efficiency_limit</td>
+<td th:text="${request.accuracy_limit}">accuracy_limit</td>
+<td>
+<a th:href="@{adminhome-tag_task(order='search_request',id=${request.id})}">查看</a>
+</td>
+<td>
+<a th:href="@{adminhome-tag_collection(order='delete',id=${request.id})}">删除</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>用户主页-历史</title>
+<link rel="stylesheet" type="text/css" href="style/workerhome-history2.css">
+<link rel="stylesheet" type="text/css" href="../static/style/workerhome6.css" 
+th:href="@{style/workerhome6.css}">
+<script type="text/javascript" src="../static/script/echarts.js" th:src="@{script/echarts.js}"></script>
+<script>
+	/*
+	 注释
+	 */
+</script>
+<script th:inline="javascript">
+	var option = {
+		tooltip : {
+			trigger : 'axis'
+		},
+		polar : [ {
+			indicator : [ {
+				text : '效率（ efficiency）',
+				max : 25
+			}, {
+				text : '质量（credit）',
+				max : 100
+			}, {
+				text : '准确度（accuracy）',
+				max : 1
+			} ]
+		} ],
+		calculable : true,
+		series : [ {
+			name : 'property',
+			type : 'radar',
+			data : [ {
+				value : [ /*[[${session.worker.workerPortraitEntity.efficiency}]]*/100,
+						/*[[${session.worker.workerPortraitEntity.credit}]]*/100,
+						/*[[${session.worker.workerPortraitEntity.accuracy}]]*/1 ],
+				name : '你'
+			} ]
+		} ]
+	};
+</script>
+<script>
+	window.onload=function(){
+		var myChart = echarts.init(document.getElementById('chart-worker'));
+		myChart.setOption(option);
+	}
+</script>
+</head>
+
+<body>
+<div class='top'>
+<img src="illustrate/background_workerhome.jpeg">
+</div>
+<div class="baseinfo">
+<div class="baseinfo-identity">
+<img src="illustrate/avatar.jpeg">
+<div class="baseinfo-identity-text1" th:text="${session.worker.workerEntity.workername}">worker</div>
+<div class="baseinfo-identity-text2" th:text="${session.worker.workerEntity.id}">id</div>
+</div>
+<div class="baseinfo-numbers">
+<table>
+<tr>
+<td th:text="${tasknumber}">tasknumber</td>
+<td th:text="${session.worker.workerEntity.point}">point</td>
+<td th:text="${credit}">credit</td>
+</tr>
+<tr>
+<td>已完成图片数</td>
+<td>积分</td>
+<td>信誉度</td>
+</tr>
+</table>
+</div>
+<div class="chart-worker" id="chart-worker"></div>
+<div class="baseinfo-path">
+点击前往：
+<a href="home">
+<img src="illustrate/logo.png">
+</a>
+<a href="workerlogout">登出</a>
+</div>
+</div>
+<div class="detailinfo">
+<div class="detailinfo-navigator">
+<ul>
+<li>
+<a href="workerhome-history">
+标注历史
+</a>
+</li>
+<li>
+<a href="workerhome-rank">
+排名
+</a>
+</li>
+<li>
+<a href="workerhome-gift">
+礼品兑换
+</a>
+</li>
+</ul>
+</div>
+<div class="detailinfo-history">
+<ul>
+<li th:each="collection:${collectionlist}">
+<img src="illustrate/history.png" th:src="@{${collection.imagepath}}">
+<div th:text="${collection.content}">content</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

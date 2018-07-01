@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>标注进行中</title>
+<link rel="stylesheet" type="text/css" href="style/tag3.css" >
+<script type="text/javascript" src="script/mycanvas11.js" >alert(2);</script>
+<script>
+/*
+注释
+*/
+</script>
+<script th:inline="javascript">
+//全局变量
+var array_canvas=[];
+var conf_canvas=new Conf_canvas();
+conf_canvas.parentid="canvas";
+var task=/*[[${task}]]*/null;
+//alert(JSON.stringify(task));
+var time_start=0;
+var time_end=0;
+</script>
+<script>
+//全局函数
+function back(){
+	alert("感谢您");
+	window.location.href="search";
+}
+</script>
+<script th:inline="javascript">
+//页面初始化
+
+window.onload=function(){
+var conf_image=new Conf_image();
+conf_image.imagesrc=/*[[${task.imagePath}]]*/ "pic2.jpeg";
+var canvas_image=new Canvas_image(conf_canvas,conf_image);
+task.workerID=/*[[${session.worker.workerEntity.id}]]*/ -1;
+time_start= new Date().getTime();
+}
+</script>
+<script th:inline="javascript">
+//画布的动态操作(对于两种画图的公共部分)
+function undo(){
+array_canvas.pop().clear();
+}
+function submit_share(){
+	time_end=new Date().getTime();
+	task.time=(time_end-time_start)/1000;
+	var xmlhttp= new XMLHttpRequest();
+	xmlhttp.open("post","tag",false);
+	xmlhttp.setRequestHeader("Content-Type","application/json;charset=utf-8");
+	xmlhttp.send(JSON.stringify(task));
+	//alert(JSON.stringify(task));
+	window.location.href=window.location.href;
+}
+</script>
+<script th:if="${task.type.RequestType eq 'AreaTag'}">
+//画布的动态操作(对于区域标注)
+function create(){
+var canvas_curveline=new Canvas_curveline(conf_canvas);
+array_canvas.push(canvas_curveline);
+}
+function submit(){
+	for(var index in array_canvas){
+		var canvas=array_canvas[index];
+		task.tags.push(JSON.stringify(canvas.points));
+	}
+	submit_share();
+}
+</script>
+<script th:if="${task.type.RequestType eq 'FrameTag'}">
+//画布的动态操作(对于标框标注)
+function create(){
+var canvas_rectangle=new Canvas_rectangle(conf_canvas);
+array_canvas.push(canvas_rectangle);
+}
+function submit(){
+	for(var index in array_canvas){
+		var canvas=array_canvas[index];
+		var tag=[];
+		var node1={};
+		var node2={};
+		node1.x=canvas.startX;
+		node1.y=canvas.startY;
+		tag.push(node1);
+		node2.x=canvas.endX;
+		node2.y=canvas.endY;
+		tag.push(node2);
+		task.tags.push(JSON.stringify(tag));
+	}
+	submit_share();
+}
+</script>
+<script th:if="${task.type.RequestType eq 'ClassTag'}">
+//画布的动态操作（对于分类标注）
+function submit(){
+	var select=document.getElementById("answer");
+	task.answer=select.options[select.selectedIndex].value;
+	submit_share();
+}
+</script>
+</head>
+
+<body>
+<div class="imagearea">
+<div class="canvas" id="canvas">
+</div>
+</div>
+<div class="block taskinfo">
+<div class="taskinfo-content" th:text="${task.question}">contentcontentcontentcontentcontentcontentcontentcontentcontent</div>
+<div class="taskinfo-point" th:text="${task.point}+'    积分'">taskpoint&nbsp;&nbsp;&nbsp;&nbsp;积分</div>
+</div>
+<div class="block workerinfo">
+<div class="workerinfo-point" th:text="'你现在的积分为：  '+${session.worker.workerEntity.point}">你现在的积分为：&nbsp;&nbsp;point
+</div>
+</div>
+<div class="block canvastool">
+<button  th:if="${task.type.RequestType ne 'ClassTag'}"  class="buttonmodel button_create" onclick="create()">新建</button>
+<button  th:if="${task.type.RequestType ne 'ClassTag'}"  class="buttonmodel button_undo" onclick="undo()">撤销</button>
+<button  th:if="${task.type.RequestType ne 'ClassTag'}"  class="buttonmodel button_submit" onclick="submit()">提交</button>
+<button class="buttonmodel button_back" onclick="back()">返回</button>
+</div>
+<div th:if="${task.type.RequestType eq 'ClassTag'}" class="block textarea">
+<select id="answer">
+<option th:each="answer:${task.answerMap}"  th:value="${answer.key}"  th:text="${answer.value}">
+</select>
+<button type="submit" class="buttonmodel button_submit" onclick="submit()" >提交</button>
+</div>
+</body>
+
+</html>

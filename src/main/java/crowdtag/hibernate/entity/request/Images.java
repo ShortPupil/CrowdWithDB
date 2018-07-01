@@ -34,7 +34,7 @@ public class Images extends BaseModel implements Serializable{
 	@Column(nullable = false)
     private String path; //-
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "images", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "images", cascade = CascadeType.ALL)
 	@Column(nullable = false)
     private List<Records> records = new ArrayList<Records>(); //-
     
@@ -48,7 +48,7 @@ public class Images extends BaseModel implements Serializable{
 	private String question; //-
 	
 	/**假如是第一种描述，就把描述信息放在下面的属性里*/
-	@ElementCollection(fetch=FetchType.LAZY, //加载策略,延迟加载  
+	@ElementCollection(fetch=FetchType.EAGER, 
             targetClass=String.class) //指定集合中元素的类型  
     @CollectionTable(name="onecontent_info") //指定集合生成的表  
     @MapKeyColumn(name="one_id") //指定map的key生成的列

@@ -1,8 +1,6 @@
 package crowdtag.hibernate.entity;
 
 import java.io.Serializable;
-import java.sql.Blob;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -27,18 +25,25 @@ public class RequesterEntity extends BaseModel implements Serializable{
 	@Column(nullable = true)
 	private String email;
 	
-	@Column(nullable = true)
-	private Blob picture;
+	@Column(nullable = false)
+	private String picture = "https://songzi-picture.oss-cn-shenzhen.aliyuncs.com/nopic_400x300.gif";
 	
 	@Column(nullable = true)
 	private String address;
 	
-	public RequesterEntity(String name, String password, String email, Blob pic, String address) {
+	@Column(nullable = false)
+	private String company;
+	
+	@Column(nullable = false)
+	private double account = 0;
+	
+	public RequesterEntity() {}
+	public RequesterEntity(String name, String password, String email, String address, String company) {
 		this.name = name;
 		this.password = password;
 		this.email = email;
-		this.picture = pic;
 		this.address = address;
+		this.company = company;
 	}
 	
 	public String getName() {
@@ -65,11 +70,11 @@ public class RequesterEntity extends BaseModel implements Serializable{
 		this.email = email;
 	}
 
-	public Blob getPicture() {
+	public String getPicture() {
 		return picture;
 	}
 
-	public void setPicture(Blob picture) {
+	public void setPicture(String picture) {
 		this.picture = picture;
 	}
 
@@ -79,5 +84,23 @@ public class RequesterEntity extends BaseModel implements Serializable{
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	/**
+	 * @return the company
+	 */
+	public String getCompany() {
+		return company;
+	}
+	/**
+	 * @param company the company to set
+	 */
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public double getAccount() {
+		return account;
+	}
+	public void setAccount(double account) {
+		this.account = account;
 	}
 }

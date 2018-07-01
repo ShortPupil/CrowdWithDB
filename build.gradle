@@ -1,48 +1,54 @@
-buildscript {
-	ext {
-		springBootVersion = '2.0.1.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
-}
-
 apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+group = 'crowdsoucing_tag'
+version = '1.0.0'
+mainClassName = 'crowdtag.Application'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenLocal()
+    jcenter()
+    mavenCentral()
 }
 
-
-configurations.all {
-     resolutionStrategy.cacheChangingModulesFor 72, 'hours'
+bootRun {
+    systemProperties = System.properties
+}
+buildscript {
+    ext {
+        springBootVersion = '2.0.2.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:2.0.2.RELEASE')
+    }
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile("org.springframework.boot:spring-boot-starter-test")
-	compile('org.thymeleaf:thymeleaf-spring5')
+	compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.0.2.RELEASE', ext: 'pom'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.2.RELEASE'
+	compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.0.7.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.0.2.RELEASE'
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.0.2.RELEASE'
+	compile group: 'org.thymeleaf', name: 'thymeleaf-spring5', version: '3.0.9.RELEASE'
 	compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
 	compile group: 'org.json', name: 'json', version: '20180130'
 	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.0.2.RELEASE'
-	testCompile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.0.Final'
 	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.3.0.Final'
 	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
     compile group: 'javax.transaction', name: 'javax.transaction-api', version: '1.2'
     compile group: 'com.aliyun.oss', name: 'aliyun-sdk-oss', version: '3.1.0'
     compile group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
+	
 
     // Utilities
     compile 'com.google.guava:guava:+'
@@ -50,3 +56,5 @@ dependencies {
     compile 'org.projectlombok:lombok:+'
     compile 'org.apache.commons:commons-lang3:+'
 }
+
+

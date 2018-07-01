@@ -1,0 +1,110 @@
+body{
+margin:0;
+color:#434343;
+background:#fff;
+}
+
+a{
+color:#434343;
+}
+
+img{
+	max-width:100%;
+}
+.top{
+width:100%;
+color:#fff;
+text-align: center;
+font-size:0;
+}
+
+.titleblock{
+background:#d9d9d9;
+width:100%;
+text-align: center;
+}
+
+.titleblock-text1{
+padding-top:5%;
+font-size:240%;
+font-weight: bold;
+}
+
+.titleblock-text2{
+color:#00baff;
+font-size:150%;
+padding-bottom:5%;
+}
+
+.identity{
+padding-top:5%;
+background-image: url(../illustrate/background3_teaminfo.jpeg);
+background-size: 100%;
+color:#fff;
+padding-bottom:3%;
+}
+
+.identity img{
+margin-left:45%;
+width:10%;
+}
+
+.identity-text1{
+margin-top:4%;
+text-align: center;
+font-weight: bold;
+font-size:250%;
+}
+
+.identity-text2{
+font-size:120%;
+text-align: center;
+}
+
+.identity-text3{
+margin-top:4%;
+margin-left:30%;
+margin-right:30%;
+font-size:150%;
+}
+
+.identity-text4{
+margin-top:2%;
+margin-left:30%;
+margin-right:30%;
+font-size:120%;
+}
+
+.function{
+text-align: center;
+font-size:0;
+color:#000;
+}
+
+.team{
+	font-size:0;
+}
+.team img{
+	width:100%;
+}
+.request{
+padding-bottom:3%;
+font-size:200%;
+text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,122 +1,272 @@
 <!DOCTYPE html>
-<html xmlns:th="www.thymeleaf.org">
+<html xmlns="www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<script src="jquery-1.8.2.js" ></script>
-<script src="FileSaver.js" charset="utf-8"></script>
+<meta charset="UTF-8">
 <title>RequestCreate</title>
-<h1>创建项目：</h1>
-<script type="text/javascript">
+<style type="text/css">
 
-function returnToRequesterHome(){
-	var name=document.getElementById("nameLabel").innerHTML;
-	location.href="RequesterHome?"+name;
-}
-
-function uploadPicture(){
-	//读取保存图片地址的txt文本
-	
-	var pathTxt;//保存所有的路径
-	var selectedFile=document.getElementById("files").files[0];
-	
-	var reader=new FileReader();
-	reader.readAsText(selectedFile,'gb2312');
-	
-	reader.onload=function(){
-		var pathInput=document.getElementById("pathInput");
-		pathInput.value=this.result;
-	}
-	
-	var typeInput=document.getElementById("typeInput");
-	var typeSelect=document.getElementById("typeSelect");
-	typeInput.value=typeSelect.value;
-	
-}
-
-function create(){
-	var question=document.getElementById("textArea").value;
-	var questionInput=document.getElementById("questionInput");
-	questionInput.value=question;
-}
-
-
-
-</script>
-</head>
-<body>
-
-<script type="text/javascript" th:inline="javascript">
-window.onload=function(){
-	var str=window.location.search;
-	var label=document.getElementById("nameLabel");
-	//location.search是从当前URL的?号开始的字符串
-	label.innerHTML=str.substring(1);
-	if(str=="")label.innerHTML=/*[[${requesterID}]]*/ 00000;
-	var requesterIDTemp=document.getElementById("nameLabel").innerHTML;
-	var requesterIDInput=document.getElementById("requesterIDInput");
-	requesterIDInput.value=requesterIDTemp;
-}
-</script>
-
-<div id="requesterDiv">
-<label id="nameLabel"></label>
-<label>|</label>
-<a href="RequesterLogin">登出</a>
-<label>|</label>
-<a href="ContactUs">联系我们</a>
-</div>
-
-<form name="requestForm" method="post" action="RequestCreate">
-<div id="requestCreateDiv">
-  <div id="nameDiv">
-  <label>任务名称：</label>
-  <input type="text" id="nameInput" name="name">
-  <br>
-  <br>
-  <label>标注类型：</label>
-  <select id="typeSelect">
-  <option value="ClassTag">ClassTag</option>
-  <option value="FrameTag">FrameTag</option>
-  <option value="AreaTag">AreaTag</option>
-  </select>
-  <input type="text" id="typeInput" name="type" style="display:none">
-  </div>
-  <br>
-  <div id="descriptionDiv">
-  <label>任务描述：</label>
-  <input type="text" id="descriptionInput" name="description">
-  </div>
-  <br>
-  <div id="requestSetupDiv">
-  <label>奖励积分/张：</label>
-  <input type="number" id="pointInput" name="point">
-  <label>分</label>
-  <br>
-  <br>
-  <label>需要进行标注的人数/张：</label>
-  <input type="number" id="peopleInput" name="standard">
-  <label>人</label>
-  <br>
-  <br>
-  <label>上传图片路径：</label>
-  <input type="file" id="files" onchange="uploadPicture()">
-  <input type="text" id="pathInput" name="path" style="display:none">
-  <br>
-  <br>
-  <br>
-  <div>
-  <label>*若是分类标注，请填写问题并用","分隔</label>
-  <textarea rows="3" cols="20" id="textArea"></textarea>
-  <input type="text" id="questionInput" name="question" style="display:none">
-  </div>
-  <br>
-  <input type="text" id="requesterIDInput" name="requesterID" style="display:none">
-  <input type="submit" value="创建" onclick="create()">
-  </div>
+a:link {text-decoration:none;}    /* unvisited link */
+a:visited {text-decoration:none;} /* visited link */
+a:hover {text-decoration:underline;}   /* mouse over link */
+a:active {text-decoration:underline;}  /* selected link */
+ul.sonarmenu{ /* Inspired by http://tympanus.net/codrops/2013/08/06/creative-link-effects */  
+    list-style: none;  
+}  
   
- 
+ul.sonarmenu li{  
+ display: inline;  
+}  
+  
+ul.sonarmenu a{  
+    position: relative;  
+    display: inline-block;  
+    color: black; /* font color */  
+    text-decoration: none;  
+    margin: 10px 20px;  
+    text-transform: uppercase;  
+    font-family: 'Raleway', sans-serif; /* font style (uses Google fonts) */  
+    font-size: 22px; /* font size */  
+    letter-spacing: 2px; /* letter spacing */  
+    border-bottom: 2px solid transparent; /* Bottom border style */  
+}  
+  
+ul.sonarmenu a:hover, ul.sonarmenu a:focus{  
+    outline: none;  
+    border-bottom: 2px solid #eee; /* Bottom border style on hover */  
+}  
+  
+ul.sonarmenu a::before, ul.sonarmenu a:after{ /* shared style for two circles */  
+    position: absolute;  
+    top: 50%;  
+    left: 50%;  
+    width: 70px; /* width of outer circle */  
+    height: 70px; /* height of outer circle */  
+    border: 12px double rgba(0,0,0,0.1); /* style and color of circles */  
+    border-radius: 50%;  
+    content: '';  
+    opacity: 0;  
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0.2);  
+    -moz-transform: translateX(-50%) translateY(-50%) scale(0.2);  
+    transform: translateX(-50%) translateY(-50%) scale(0.2);  
+}  
+  
+ul.sonarmenu a:after{ /* inner circle specific CSS */  
+    width: 60px; /* width of inner circle */  
+    height: 60px; /* width of inner circle */  
+    border-width: 6px;  
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0.8);  
+    -moz-transform: translateX(-50%) translateY(-50%) scale(0.8);  
+    transform: translateX(-50%) translateY(-50%) scale(0.8);  
+}  
+  
+ul.sonarmenu a:hover:before, ul.sonarmenu a:hover:after{  
+    -webkit-animation: pulsate 1.2s infinite; /* animation name duration loop etc */  
+    -moz-animation: pulsate 1.2s infinite;  
+    -ms-animation: pulsate 1.2s infinite;  
+    animation: pulsate 1.2s infinite;  
+}  
+  
+/* ### Keyframe animations ### */  
+  
+@-webkit-keyframes pulsate{  
+  
+  30%{  
+    opacity: 1;  
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(1);  
+  }  
+  
+    100%{  
+    opacity: 0.3;  
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0.5);  
+    }  
+  
+}  
+  
+@-moz-keyframes pulsate{  
+  
+  30%{  
+    opacity: 1;  
+    -moz-transform: translateX(-50%) translateY(-50%) scale(1);  
+  }  
+  
+    100%{  
+    opacity: 0.3;  
+    -moz-transform: translateX(-50%) translateY(-50%) scale(0.5);  
+    }  
+  
+}  
+  
+@-ms-keyframes pulsate{  
+  
+  30%{  
+    opacity: 1;  
+    -ms-transform: translateX(-50%) translateY(-50%) scale(1);  
+  }  
+  
+    100%{  
+    opacity: 0.3;  
+    -ms-transform: translateX(-50%) translateY(-50%) scale(0.5);  
+    }  
+  
+}  
+  
+@-keyframes pulsate{  
+  
+  30%{  
+    opacity: 1;  
+    transform: translateX(-50%) translateY(-50%) scale(1);  
+  }  
+  
+    100%{  
+    opacity: 0.3;  
+    transform: translateX(-50%) translateY(-50%) scale(0.5);  
+    }  
+  
+}
+
+body{
+background:#f6f6f6;
+}
+
+.title{
+color:black;
+font-size:25px;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#rcorners{
+border-radius: 50%;
+    border:2px solid black;
+    width:300px;
+    height:500px;
+}
+
+</style>
+</head>
+
+<body>
+<script type="text/javascript">
+window.onload=function(){
+	document.getElementById("homePage").href="RequesterHome";
+	document.getElementById("requestManage").href="RequestManage";
+	document.getElementById("newRequest").href="RequestCreate";
+	document.getElementById("requesterCenter").href="RequesterCenter";
+}
+
+function toClassTag(){
+	location.href="RequestCreateClassTag";
+}
+
+function toFrameTag(){
+	location.href="RequestCreateFrameTag";
+}
+
+function toAreaTag(){
+	location.href="RequestCreateAreaTag";
+}
+</script>
+<div style="margin-left:9%">
+
+<p class="title"><img src="illustrate/logo.jpg" height="100" width="120">欢迎您加入我们！</p>
 </div>
-</form>
+<div style="margin-left:45%">  
+<ul class="sonarmenu">  
+
+<li><a id="homePage">主页</a></li>
+<li><a id="requestManage">任务管理</a></li>  
+<li><a id="newRequest">新任务</a></li>  
+<li><a id="requesterCenter">个人中心</a></li> 
+  
+</ul>  
+</div>
+<hr style="height:10px;border:none;border-top:10px groove skyblue;" />
+
+<div style="position:absolute;right:0;top:0">
+<label style="font-size:20px">您好!</label><label style="font-size:20px" id="idLabel">[[${id}]]</label><a href="RequesterLogin" style="font-size:20px">登出</a>
+</div>
+<div align="center" style="margin-top:0">
+<br>
+<br>
+<br>
+
+
+<div style="float:left;margin-left:7%">
+<button class="button" onclick="toClassTag()"><span>分类标注</span></button>
+<br>
+<br>
+<img src="illustrate/classTag.jpg" height="200" width="300">
+</div>
+
+
+<div style="float:left;margin-left:9%">
+<button class="button" onclick="toFrameTag()"><span>标框标注</span></button>
+<br>
+<br>
+<img src="illustrate/frameTag.jpg" height="200" width="300">
+</div>
+
+<div style="float:right;margin-right:5%">
+<button class="button" onclick="toAreaTag()"><span>区域标注</span></button>
+<br>
+<br>
+<img src="illustrate/areaTag.jpg" height="200" width="300">
+</div>
+</div>
+
 </body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </html>
