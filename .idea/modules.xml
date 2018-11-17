@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyCrowdTag.iml" filepath="$PROJECT_DIR$/MyCrowdTag.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyCrowdTag_main.iml" filepath="$PROJECT_DIR$/.idea/modules/MyCrowdTag_main.iml" group="MyCrowdTag" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyCrowdTag_test.iml" filepath="$PROJECT_DIR$/.idea/modules/MyCrowdTag_test.iml" group="MyCrowdTag" />
+    </modules>
+  </component>
+</project>

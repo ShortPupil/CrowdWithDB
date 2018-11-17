@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.aliyun:aliyun-java-sdk-ecs:4.2.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aliyun/aliyun-java-sdk-ecs/4.2.0/945f06a5bf47db2b715b48d36df7e198dd3fed2e/aliyun-java-sdk-ecs-4.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aliyun/aliyun-java-sdk-ecs/4.2.0/1cae6624cb8ae98932018eb139aefe6b2012a25a/aliyun-java-sdk-ecs-4.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,95 @@
+body{
+color: #666;
+padding:0px;
+margin:0px;
+font-style: bold; 
+}
+
+a{
+text-decoration: none;
+cursor: pointer;
+}
+
+input{
+cursor: text;
+}
+
+input[type="submit"]{
+cursor: pointer;
+}
+
+.top1{
+width:990px;
+margin:0 auto;
+margin-top:10px;
+font-size:200%;
+font-style: bold;
+}
+
+.top1 a img{
+width:7%;
+margin:0 2%;
+}
+
+.login{
+background-image: url(../illustrate/login3.png);
+background-size: cover;
+background-repeat: no-repeat;
+margin-top:10px;
+padding-top:5%;
+padding-bottom:10%;
+}
+
+.login-box{
+background-color:#fff;
+margin-left:60%;
+width:30%;
+padding:2% 0;
+}
+
+.login-box-text{
+text-align: center;
+border-bottom:1px solid #f4f4f4;
+font-size:150%;
+padding-bottom:3%;
+}
+
+
+.login-box-id input{
+border:1px solid #bdbdbd;
+width:80%;
+height:30px;
+margin:5% 10%;
+}
+
+.login-box-password input{
+margin:5% 10%;
+border:1px solid #bdbdbd;
+height:30px;
+width:80%;
+margin-top:0;
+}
+
+.login-box-help{
+	margin-right:10%;
+	text-align:right;
+}
+.login-box-submit input{
+background:#e85356;
+color:#fff;
+width:80%;
+margin:5% 10%;
+height:30px;
+border:0;
+cursor: pointer;
+}
+
+
+.footer{
+margin-top:30px;
+text-align: center;
+}
+
+
+
+

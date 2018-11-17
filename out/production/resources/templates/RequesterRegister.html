@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>RequesterRegister</title>
+<style type="text/css">
+
+a:link {text-decoration:none;}    /* unvisited link */
+a:visited {text-decoration:none;} /* visited link */
+a:hover {text-decoration:underline;}   /* mouse over link */
+a:active {text-decoration:underline;}  /* selected link */
+
+ul.sonarmenu{ /* Inspired by http://tympanus.net/codrops/2013/08/06/creative-link-effects */  
+    list-style: none;  
+}  
+  
+ul.sonarmenu li{  
+ display: inline;  
+}  
+  
+ul.sonarmenu a{  
+    position: relative;  
+    display: inline-block;  
+    color: black; /* font color */  
+    text-decoration: none;  
+    margin: 10px 20px;  
+    text-transform: uppercase;  
+    font-family: 'Raleway', sans-serif; /* font style (uses Google fonts) */  
+    font-size: 22px; /* font size */  
+    letter-spacing: 2px; /* letter spacing */  
+    border-bottom: 2px solid transparent; /* Bottom border style */  
+}  
+  
+ul.sonarmenu a:hover, ul.sonarmenu a:focus{  
+    outline: none;  
+    border-bottom: 2px solid #eee; /* Bottom border style on hover */  
+}  
+  
+ul.sonarmenu a::before, ul.sonarmenu a:after{ /* shared style for two circles */  
+    position: absolute;  
+    top: 50%;  
+    left: 50%;  
+    width: 70px; /* width of outer circle */  
+    height: 70px; /* height of outer circle */  
+    border: 12px double rgba(0,0,0,0.1); /* style and color of circles */  
+    border-radius: 50%;  
+    content: '';  
+    opacity: 0;  
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0.2);  
+    -moz-transform: translateX(-50%) translateY(-50%) scale(0.2);  
+    transform: translateX(-50%) translateY(-50%) scale(0.2);  
+}  
+  
+ul.sonarmenu a:after{ /* inner circle specific CSS */  
+    width: 60px; /* width of inner circle */  
+    height: 60px; /* width of inner circle */  
+    border-width: 6px;  
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0.8);  
+    -moz-transform: translateX(-50%) translateY(-50%) scale(0.8);  
+    transform: translateX(-50%) translateY(-50%) scale(0.8);  
+}  
+  
+ul.sonarmenu a:hover:before, ul.sonarmenu a:hover:after{  
+    -webkit-animation: pulsate 1.2s infinite; /* animation name duration loop etc */  
+    -moz-animation: pulsate 1.2s infinite;  
+    -ms-animation: pulsate 1.2s infinite;  
+    animation: pulsate 1.2s infinite;  
+}  
+  
+/* ### Keyframe animations ### */  
+  
+@-webkit-keyframes pulsate{  
+  
+  30%{  
+    opacity: 1;  
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(1);  
+  }  
+  
+    100%{  
+    opacity: 0.3;  
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0.5);  
+    }  
+  
+}  
+  
+@-moz-keyframes pulsate{  
+  
+  30%{  
+    opacity: 1;  
+    -moz-transform: translateX(-50%) translateY(-50%) scale(1);  
+  }  
+  
+    100%{  
+    opacity: 0.3;  
+    -moz-transform: translateX(-50%) translateY(-50%) scale(0.5);  
+    }  
+  
+}  
+  
+@-ms-keyframes pulsate{  
+  
+  30%{  
+    opacity: 1;  
+    -ms-transform: translateX(-50%) translateY(-50%) scale(1);  
+  }  
+  
+    100%{  
+    opacity: 0.3;  
+    -ms-transform: translateX(-50%) translateY(-50%) scale(0.5);  
+    }  
+  
+}  
+  
+@-keyframes pulsate{  
+  
+  30%{  
+    opacity: 1;  
+    transform: translateX(-50%) translateY(-50%) scale(1);  
+  }  
+  
+    100%{  
+    opacity: 0.3;  
+    transform: translateX(-50%) translateY(-50%) scale(0.5);  
+    }  
+  
+}
+
+fieldset {
+border: 1px double black;
+margin-top: 16px;
+padding: 10px;
+}
+legend {
+font: bold 0.8em Arial, Helvetica, sans-serif;
+color: #00008B;
+background-color: #FFFFFF;
+}
+
+input{ 
+border: 1px solid #ccc;                
+padding: 7px 0px;
+border-radius: 3px; 
+padding-left:5px;  
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075); 
+box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s; 
+-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+input:focus{
+border-color: #66afe9;
+outline: 0;
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+
+.title{
+color:black;
+font-size:35px;
+}
+
+.frame{
+color:black;
+font-size:25px;
+}
+
+fieldset{
+background-color:white;
+}
+
+body{
+background:#f6f6f6;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 23px;
+  padding: 15px;
+  width: 190px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+function checkName(){
+	var check=false;
+	var name=document.getElementById("name").value;
+	if(name.length>10){
+		document.getElementById("checkName").innerHTML="  × 不要多于10位";
+		check=false;
+	}
+	else{
+		document.getElementById("checkName").innerHTML="  √";
+		check=true;
+	}
+	return check;
+}
+
+function checkPassword(){
+	var check=false;
+	var password=document.getElementById("password").value;
+	if(password.length<6){
+		document.getElementById("checkPassword").innerHTML="  × 不要少于6位";
+		check=false;
+	}
+	else{
+		document.getElementById("checkPassword").innerHTML="  √";
+		check=true;
+	}
+	return check;
+}
+
+function checkConfirmPassword(){
+	var check=false;
+	var password=document.getElementById("password").value;
+	var confirmPassword=document.getElementById("confirmPassword").value;
+	if(password!=confirmPassword){
+		document.getElementById("checkConfirmPassword").innerHTML="  × 两次输入密码不一致";
+		check=false;
+	}
+	else{
+		document.getElementById("checkConfirmPassword").innerHTML="  √";
+		check=true;
+	}
+	return check;
+}
+
+function check(){
+	var check=checkName()&&checkPassword()&&checkConfirmPassword();
+	return check;
+}
+</script>
+<div style="margin-left:9%">
+
+<p class="title"><img src="illustrate/logo.jpg" height="100" width="120">注册发起者帐号</p>
+</div>
+
+<div style="margin-left:45%">  
+<ul class="sonarmenu">  
+
+<li><a href="home">首页</a></li>
+<li><a href="workerlogin">我是工人</a></li>  
+<li><a href="RequesterLogin">发起者登录</a></li>
+<li><a href="teaminfo">联系我们</a></li> 
+  
+</ul>  
+</div>  
+<div style="position:absolute;right:0;top:0">
+已有帐号？请<a href="http://localhost:8080/RequesterLogin" style="font-size:25px">登录</a>
+</div>
+<hr style="height:10px;border:none;border-top:10px groove skyblue;" />
+
+<div style="float:right;margin-right:15%;margin-top:10%">
+<img src="illustrate/finger.jpg" height="50" width="70">
+
+<fieldset style="border:0.5px solid black">
+<p style="font-size:20px">众包标注系统能够接</p>
+<p style="font-size:20px">受众包发起者的标注</p>
+<p style="font-size:20px">请求，同时该系统也</p>
+<p style="font-size:20px">会和您一起评估工人</p>
+<p style="font-size:20px">的完成质量。</p>
+</fieldset>
+</div>
+
+<form method="post" onsubmit="return check()" action="RequesterRegister">
+<div style="margin-left:9%">
+<fieldset style="width:600px; border-width:5px;">
+<legend class="frame">账户信息</legend>
+<br>
+<div align="center">
+<img src="illustrate/originalHead2.jpg" id="image" height="150" width="150">
+</div>
+
+<div align="center">
+<p>
+<span style="display:inline-block;width:100px;text-align:right;font-size:20px">用户名：</span>
+<input type="text" name="name" id="name" required="required" onchange="checkName()" placeholder="请输入用户名（不多于10位）">
+<br>
+<span id="checkName"></span>
+</p>
+
+<p>
+<span style="display:inline-block;width:100px;text-align:right;font-size:20px">密码：</span>
+<input type="password" name="password" id="password" required="required" onchange="checkPassword()" placeholder="请输入密码（不少于6位）">
+<br>
+<span id="checkPassword"></span>
+</p>
+
+
+<p>
+<span style="display:inline-block;width:100px;text-align:right;font-size:20px">确认密码：</span>
+<input type="password" name="confirmPassword" id="confirmPassword" required="required" onchange="checkConfirmPassword()" placeholder="请确认密码">
+<br>
+<span id="checkConfirmPassword"></span>
+</p>
+</div>
+</fieldset>
+</div>
+<br>
+<div style="margin-left:9%">
+<fieldset style="width:600px; border-width:5px;">
+<legend class="frame">基本信息</legend>
+<div align="center">
+<p>
+<span style="display:inline-block;width:100px;text-align:right;font-size:20px">电子邮箱：</span>
+<input type="text" name="email" id="email" placeholder="请输入电子邮箱地址">
+</p>
+
+<p>
+<span style="display:inline-block;width:100px;text-align:right;font-size:20px">公司：</span>
+<input type="text" name="company" id="company" placeholder="请输入公司名称">
+</p>
+
+<p>
+<span style="display:inline-block;width:100px;text-align:right;font-size:20px">地址：</span>
+<input type="text" name="address" id="address" placeholder="请输入地址">
+</p>
+
+
+</div>
+
+</fieldset>
+</div>
+<br>
+
+<div style="margin-left:27%">
+<input type="submit" value="注册" class="button">
+</div>
+</form>
+<br>
+<br>
+<br>
+</body>
+</html>

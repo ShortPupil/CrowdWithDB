@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>轻注主页</title>
+<link rel="stylesheet" type="text/css" href="../static/style/home3.css" 
+th:href="@{style/home3.css}">
+<script th:inline="javascript">
+/*
+注释
+*/
+window.onload=function(){
+	var random=Math.random();
+	var image=document.getElementById("image");
+	if(random>0.66){
+		image.src="illustrate/request1.png";
+	}else if(random>0.33){
+		image.src="illustrate/worker2.png";
+	}else{
+		image.src="illustrate/requester2.jpg";
+	}
+}
+setTimeout("go()",300);
+function go(){
+	window.location.href="search";
+}
+
+</script>
+</head>
+
+<body>
+<img id="image" >
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
