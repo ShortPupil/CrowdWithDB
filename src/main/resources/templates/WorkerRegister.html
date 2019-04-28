@@ -2,17 +2,62 @@
 <html xmlns:th="www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>register</title>
+<title>用户注册</title>
+<link rel="stylesheet" type="text/css" href="style/workerregister.css">
+<script>
+/*
+Designed for those Work on Controller
+followings.required = false
+
+output to controller:
+
+input from controller:
+	
+*/
+</script>
 </head>
+
 <body>
-
-<form method="post" th:object="${worker}">
-<label for="name">name</label>
-<input type="text" th:field="*{workername}" id="name"><br>
-<label for="password">password</label>
-<input type="password" th:field="*{password}" id="password"><br>
-<input type="submit" value="register">
+<div class="side">
+<a href="/home" >
+<img src="illustrate/logo.png" >
+<h1>轻注</h1>
+</a>
+</div>
+<div class="register">
+<div class="register-login">
+已有账号？
+<a href="workerlogin">请登录</a>
+</div>
+<h1>欢迎来到轻注</h1>
+<h2>每一天，乐在标注。</h2>
+<form method="post">
+<input type="text" name="workername" placeholder="昵称">
+<input type="password" name="password" placeholder="密码">
+<input type="submit" value="立即注册">
 </form>
-
+</div>
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
